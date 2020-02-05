@@ -84,7 +84,7 @@ def _build_net(definition, inputs, weights, activation, trainable, data_format):
                 W_init = tf.constant_initializer(weights[name+'_W'])
                 b_init = tf.constant_initializer(weights[name+'_b'])
             else:
-                W_init = tf.contrib.layers.xavier_initializer()
+                W_init = tf.truncated_normal_initializer(mean=0.0, stddev=0.1)
                 b_init = tf.zeros_initializer()
             layer = tf.layers.conv2d(layer,
                 name=name,
